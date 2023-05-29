@@ -23,15 +23,19 @@ app.use('/api/', getStocks);
 app.use('/api/', loginStatus);
 app.use('/api/', logout);
 
+const connect = async () => {
+  await mongoose.connect(process.env.MONGO_DB_URL)
+    .then(() => {
+      console.log("Database Connected");
+    })
+    .catch((err) => {
+      process.exit(1);
+      console.log(err);
+    });
+}
 
-mongoose.connect(process.env.MONGO_DB_URL)
-  .then(() => {
-    console.log("Database Connected");
-  })
-  .catch((err) => {
-    console.log(err);
+connect().then(() => {
+  app.listen(process.env.PORT || 4000, () => {
+    console.log('Server listening on port 4000');
   });
-
-app.listen(4000, () => {
-  console.log('Server listening on port 4000');
 });
