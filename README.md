@@ -1,5 +1,7 @@
 # Backend of Stock Share
 
+-   Frontend: https://github.com/rexFX/Stock-Share
+
 ### Features
 
 -   Saves login info in MongoDB on Login
