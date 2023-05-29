@@ -35,7 +35,8 @@ router.post('/getStocks', verify, async (req, res) => {
           parseInt(date[0]) === mm
           &&
           parseInt(date[2]) === yyyy) {
-          label.push(stockData.items[key].date);
+          date = `${date[1]}-${date[0]}-${date[2]}`;
+          label.push(date);
           data.push(stockData.items[key].close);
         }
         filteredData = [
