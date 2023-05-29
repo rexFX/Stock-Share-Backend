@@ -39,25 +39,25 @@ router.post('/getStocks', verify, async (req, res) => {
           label.push(date);
           data.push(stockData.items[key].close);
         }
-        filteredData = [
-          {
-            labels: label,
-            datasets: [
-              {
-                label: stockData.meta.symbol,
-                data: data,
-                backgroundColor: "rgba(255, 181, 167, 0.4)",
-                fill: true,
-                borderColor: "rgba(75,192,192,1)",
-                borderWidth: 2,
-              },
-            ],
-          },
-          {
-            currency: stockData.meta.currency,
-          }
-        ]
       }
+      filteredData = [
+        {
+          labels: label,
+          datasets: [
+            {
+              label: stockData.meta.symbol,
+              data: data,
+              backgroundColor: "rgba(255, 181, 167, 0.4)",
+              fill: true,
+              borderColor: "rgba(75,192,192,1)",
+              borderWidth: 2,
+            },
+          ],
+        },
+        {
+          currency: stockData.meta.currency,
+        }
+      ]
       return res.status(200).send(filteredData);
     })
     .catch((err) => console.log(err));
