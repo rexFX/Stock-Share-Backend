@@ -29,10 +29,10 @@ router.post('/getStocks', verify, async (req, res) => {
       for (let key in stockData.items) {
         let date = stockData.items[key].date.split("-");
 
-        // || parseInt(date[0]) === mm - 1 ||
+        // || parseInt(date[0]) === mm ||
         // parseInt(date[0]) === mm - 2)
         if (
-          parseInt(date[0]) === mm
+          parseInt(date[0]) === mm - 1
           &&
           parseInt(date[2]) === yyyy) {
           date = `${date[1]}-${date[0]}-${date[2]}`;
